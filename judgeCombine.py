@@ -1,25 +1,24 @@
 # 整理 json 使用的工具
-import json
 import csv
-
+import json
 # 執行 command 的時候用的
 import os
-
-# 強制等待 (執行期間休息一下)
-from time import sleep
-import time
-
-# 子處理程序，用來取代 os.system 的功能
-import subprocess
-
-import pandas as pd
-import numpy as np
-
 # 匯入 正規表達式
 import re
+# 子處理程序，用來取代 os.system 的功能
+import subprocess
+import time
+# 建立儲存文件的資料夾
+from pathlib import Path
+# 強制等待 (執行期間休息一下)
+from time import sleep
+
+import numpy as np
+import pandas as pd
 
 # 建立儲存文件的資料夾
-folderPath = '/Users/allentsai/python_web_scraping-master/judgement_file'
+# folderPath = '/Users/allentsai/python_web_scraping-master/judgement_file'
+folderPath = Path(__file__).resolve().parent/'judgement_file'
 if not os.path.exists(folderPath):
     os.makedirs(folderPath)
 # ju_court = os.listdir(folderPath)[2]  # 查詢資料夾下的所有檔案名稱
