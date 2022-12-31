@@ -41,7 +41,7 @@ cleanedJudge = []
 nTitle = '裁定'
 nCont_1 = '不受理'  # '公訴不受理'
 nCont_2 = '駁回'  # '上訴駁回'
-nCont_3 = '共同犯'
+nCont_3 = '共同犯'  # 多人犯罪
 nCont_4 = '易服勞役'
 nCrime = '無罪'
 
