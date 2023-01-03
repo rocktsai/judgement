@@ -21,21 +21,6 @@ listSelect1 = ['非故意非過失', '過失', '故意傷害', '故意重傷害'
 listSelect2 = ['無受傷結果', '非重傷', '重傷', '死亡']
 listSelect3 = ['非尊親屬', '尊親屬']
 listSelection = [listSelect1, listSelect2, listSelect3]
-so = 0
-selected = []
-for sitem in listSelection:
-    so += 1
-    print(f'Selection {so}')
-    i = 0
-    for item in sitem:
-        print(f'{i} : {item}')
-        i += 1
-    selected.append(int(input("\nSelect one : ")))
-    print('\n')
-select1 = listSelect1[selected[0]]
-select2 = listSelect2[selected[1]]
-select3 = listSelect3[selected[2]]
-print(f'構成要件 : {select1} + {select2} + {select3}')
 
 
 def element2Crime(select1, select2, select3):
@@ -100,6 +85,22 @@ def element2Crime(select1, select2, select3):
 
 
 if __name__ == '__main__':
+
+    so = 0
+    selected = []
+    for sitem in listSelection:
+        so += 1
+        print(f'Selection {so}')
+        i = 0
+        for item in sitem:
+            print(f'{i} : {item}')
+            i += 1
+        selected.append(int(input("\nSelect one : ")))
+        print('\n')
+    select1 = listSelect1[selected[0]]
+    select2 = listSelect2[selected[1]]
+    select3 = listSelect3[selected[2]]
+    print(f'構成要件 : {select1} + {select2} + {select3}')
 
     result = element2Crime(select1, select2, select3)
     print(f'判斷罪刑結果為：{result[0]} - {result[1]}')
