@@ -318,52 +318,6 @@ def rawdata_to_featureForm():
 
 
 # 針對構成要件的組合判斷出罪刑
-def elements_to_judgecrime(strJudgeCont):
-    T_278_score = [0, '重傷害罪']
-    T_278_att_score = [0, '重傷害未遂']
-    T_284_score = [0, '過失傷害']
-    T_277_score = [0, '普通傷害罪']
-    Recht_score = [0, '無罪']
-
-    Crime_pred = ''  # 罪刑預測
-    # print(strJudgeCont)
-    for t in T_278:
-        if t in strJudgeCont:
-            T_278_score[0] += 1
-            # print(t)
-    # print(f'{T_278_score[1]} = {T_278_score[0]}')
-    for t in T_278_att:
-        if t in strJudgeCont:
-            T_278_att_score[0] += 1
-            # print(t)
-    # print(f'{T_278_att_score[1]} = {T_278_att_score[0]}')
-    for t in T_284:
-        if t in strJudgeCont:
-            T_284_score[0] += 1
-            # print(t)
-    # print(f'{T_284_score[1]} = {T_284_score[0]}')
-    for t in T_277:
-        if t in strJudgeCont:
-            T_277_score[0] += 1
-            # print(t)
-    # print(f'{T_277_score[1]} = {T_277_score[0]}')
-    for r in Recht:
-        if r in strJudgeCont:
-            Recht_score[0] += 1
-            # print(r)
-    # print(f'{Recht_score[1]} = {Recht_score[0]}')
-    if Recht_score[0] > 0:
-        Crime_pred = Recht_score[1]
-    elif max(T_278_score, T_278_att_score, T_284_score, T_277_score)[0] == 0:
-        Crime_pred = Recht_score[1]
-    else:
-        Crime_pred = max(T_278_score, T_278_att_score, T_284_score,
-                         T_277_score)[1]
-    # print(f'罪刑預測：{Crime_pred}')
-    return T_278_score, T_278_att_score, T_284_score, T_277_score, Recht_score, Crime_pred
-
-
-# 針對構成要件的組合判斷出罪刑
 def elements_to_judgecrime_2(strJudgeCont):
     T_278_score = [0, '重傷害', '6']            # 重傷害 6
     T_278_att_score = [0, '重傷害未遂', '7']      # 重傷害未遂 7
@@ -378,62 +332,41 @@ def elements_to_judgecrime_2(strJudgeCont):
     Recht_score = [0, '無罪', '0']              # 無罪 0
 
     Crime_pred = []  # 罪刑預測
-    # print(strJudgeCont)
+
     for t in T_278:
         if t in strJudgeCont:
             T_278_score[0] += 1
-            # print(t)
-    # print(f'{T_278_score[1]} = {T_278_score[0]}')
     for t in T_278_att:
         if t in strJudgeCont:
             T_278_att_score[0] += 1
-            # print(t)
-    # print(f'{T_278_att_score[1]} = {T_278_att_score[0]}')
     for t in T_278_death:
         if t in strJudgeCont:
             T_278_death_score[0] += 1
-            # print(t)
-    # print(f'{T_278_death_score[1]} = {T_278_death_score[0]}')
     for t in T_284:
         if t in strJudgeCont:
             T_284_score[0] += 1
-            # print(t)
-    # print(f'{T_284_score[1]} = {T_284_score[0]}')
     for t in T_284_serious:
         if t in strJudgeCont:
             T_284_serious_score[0] += 1
-            # print(t)
-    # print(f'{T_284_serious_score[1]} = {T_284_serious_score[0]}')
     for t in T_277:
         if t in strJudgeCont:
             T_277_score[0] += 1
-            # print(t)
-    # print(f'{T_277_score[1]} = {T_277_score[0]}')
     for t in T_277_serious:
         if t in strJudgeCont:
             T_277_serious_score[0] += 1
-            # print(t)
-    # print(f'{T_277_serious_score[1]} = {T_277_serious_score[0]}')
     for t in T_277_death:
         if t in strJudgeCont:
             T_277_death_score[0] += 1
-            # print(t)
-    # print(f'{T_277_death_score[1]} = {T_277_death_score[0]}')
     for t in T_280:
         if t in strJudgeCont:
             T_280_score[0] += 1
-            # print(t)
-    # print(f'{T_280_score[1]} = {T_280_score[0]}')
     for t in T_280_death:
         if t in strJudgeCont:
             T_280_death_score[0] += 1
-            # print(t)
-    # print(f'{T_280_death_score[1]} = {T_280_death_score[0]}')
     for r in Recht:
         if r in strJudgeCont:
             Recht_score[0] += 1
-            # print(r)
-    # print(f'{Recht_score[1]} = {Recht_score[0]}')
+
     if Recht_score[0] > 0:
         Crime_pred = Recht_score
     elif max(T_278_score, T_278_att_score, T_278_death_score, T_284_score,
@@ -445,7 +378,7 @@ def elements_to_judgecrime_2(strJudgeCont):
                          T_284_score, T_284_serious_score, T_277_score,
                          T_277_serious_score, T_277_death_score, T_280_score,
                          T_280_death_score)
-    # print(f'罪刑預測：{Crime_pred}')
+
     return T_278_score, T_278_att_score, T_278_death_score, T_284_score, T_284_serious_score, T_277_score, T_277_serious_score, T_277_death_score, T_280_score, T_280_death_score, Recht_score, Crime_pred
 
 

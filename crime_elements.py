@@ -24,28 +24,12 @@ listSelection = [listSelect1, listSelect2, listSelect3]
 
 
 def element2Crime(select1, select2, select3):
-
-    if select3 == '尊親屬':
-        if select2 == '無受傷結果':
-            if select1 == '非故意非過失':
-                crimePred = [0, '無罪']  # 無罪
-                return crimePred
-            else:
-                crimePred = [11, '其他']  # 其他
-                return crimePred
-        elif select2 == '死亡':
-            crimePred = [10, '傷害直系血親尊親屬致死']  # 傷害直系血親尊親屬致死
-            return crimePred
-        else:
-            crimePred = [9, '傷害直系血親尊親屬']  # 傷害直系血親尊親屬
-            return crimePred
-    elif select1 == '非故意非過失':
-        if select2 == '無受傷結果':
-            crimePred = [0, '無罪']  # 無罪
-            return crimePred
-        else:
-            crimePred = [11, '其他']  # 其他
-            return crimePred
+    if select1 == '非故意非過失':
+        crimePred = [0, '無罪']  # 無罪
+        return crimePred
+    elif select2 == '無受傷結果':
+        crimePred = [0, '無罪']  # 無罪
+        return crimePred
     elif select1 == '過失':
         if select2 == '非重傷':
             crimePred = [1, '過失傷害']  # 過失傷害
@@ -53,35 +37,53 @@ def element2Crime(select1, select2, select3):
         elif select2 == '重傷':
             crimePred = [2, '過失傷害致重傷']  # 過失傷害致重傷
             return crimePred
-        else:
-            crimePred = [11, '其他']  # 其他
-            return crimePred
-    elif select1 == '故意傷害':
-        if select2 == '非重傷':
-            crimePred = [3, '傷害']  # 傷害
-            return crimePred
-        elif select2 == '重傷':
-            crimePred = [4, '傷害致重傷']  # 傷害致重傷
-            return crimePred
         elif select2 == '死亡':
             crimePred = [5, '傷害致死']  # 傷害致死
             return crimePred
-        else:
-            crimePred = [11, '其他']  # 其他
-            return crimePred
+    elif select1 == '故意傷害':
+        if select2 == '非重傷':
+            if select3 == '非尊親屬':
+                crimePred = [3, '傷害']  # 傷害
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [9, '傷害直系血親尊親屬']  # 傷害直系血親尊親屬
+                return crimePred
+        elif select2 == '重傷':
+            if select3 == '非尊親屬':
+                crimePred = [4, '傷害致重傷']  # 傷害致重傷
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [9, '傷害直系血親尊親屬']  # 傷害直系血親尊親屬
+                return crimePred
+        elif select2 == '死亡':
+            if select3 == '非尊親屬':
+                crimePred = [5, '傷害致死']  # 傷害致死
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [10, '傷害直系血親尊親屬致死']  # 傷害直系血親尊親屬致死
+                return crimePred
     elif select1 == '故意重傷害':
         if select2 == '非重傷':
-            crimePred = [6, '重傷害']  # 重傷害
-            return crimePred
-        elif select2 == '非重傷':
-            crimePred = [7, '重傷害未遂']  # 重傷害未遂
-            return crimePred
+            if select3 == '非尊親屬':
+                crimePred = [7, '重傷害未遂']  # 重傷害未遂
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [9, '傷害直系血親尊親屬']  # 傷害直系血親尊親屬
+                return crimePred
+        elif select2 == '重傷':
+            if select3 == '非尊親屬':
+                crimePred = [6, '重傷害']  # 重傷害
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [9, '傷害直系血親尊親屬']  # 傷害直系血親尊親屬
+                return crimePred
         elif select2 == '死亡':
-            crimePred = [8, '重傷致死']  # 重傷致死
-            return crimePred
-        else:
-            crimePred = [11, '其他']  # 其他
-            return crimePred
+            if select3 == '非尊親屬':
+                crimePred = [8, '重傷致死']  # 重傷致死
+                return crimePred
+            elif select3 == '尊親屬':
+                crimePred = [10, '傷害直系血親尊親屬致死']
+                return crimePred
 
 
 if __name__ == '__main__':
